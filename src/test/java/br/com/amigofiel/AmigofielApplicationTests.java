@@ -1,0 +1,13 @@
+package br.com.amigofiel;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class AmigofielApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
