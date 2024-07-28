@@ -1,4 +1,4 @@
-package br.com.amigofiel.cleints;
+package br.com.amigofiel.clients;
 
 import br.com.amigofiel.domain.dto.request.AddressRequestDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
