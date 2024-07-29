@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ViaCepClient {
 
     @GetMapping("/{cep}/json")
-    AddressDTO findEnderecoByCep(@PathVariable String cep);
+    AddressDTO findAddressByZipCode(@PathVariable String cep);
 }
