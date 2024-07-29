@@ -2,6 +2,13 @@ package br.com.amigofiel.domain.entities;
 
 import br.com.amigofiel.domain.enums.FederalUnit;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 
 @Entity
 public class Address {

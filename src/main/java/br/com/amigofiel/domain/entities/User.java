@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 
-@Entity
+@Entity(name = "tb_user")
 public class User {
 
     @Id
@@ -19,10 +19,13 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "usernname")
+    @Column(name = "username")
     private String username;
 
     @Column(name = "password")
     private String password;
 
+    @OneToOne
+    @JoinColumn(name = "adoptant_id", nullable = false)
+    private Adoptant adoptant;
 }

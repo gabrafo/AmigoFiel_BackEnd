@@ -8,14 +8,16 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 
+@Entity
 public class Adoptant {
 
-    @Id
+    @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -29,10 +31,14 @@ public class Adoptant {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToOne
-    @Column(name = "address_id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    private Adoption[] adoptions = new Adoption[3];
+    @OneToMany(mappedBy = "adopter")
+    private List<Adoption> adoptions;
 
+    @OneToOne(mappedBy = "adoptant")
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

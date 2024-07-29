@@ -37,7 +37,7 @@ public class Animal {
     @Column(name = "sex")
     private char sex;
 
-    @Column(name = "column")
+    @Column(name = "weight")
     private double weight;
 
     @Column(name = "size", nullable = false)
@@ -47,9 +47,9 @@ public class Animal {
     @Column(name = "neutered", nullable = false)
     private boolean neutered; // Castração
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @Column(name = "location_id", nullable = false)
-    private Address location;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
 
     @Column(name = "registration_date", nullable = false) // Data que o animal foi postado
     private Date registrationDate;
@@ -58,7 +58,9 @@ public class Animal {
     @Enumerated(EnumType.STRING)
     private CurrentStatus currentStatus;
 
-    @OneToMany
-    @Column(name = "vaccins_list")
+    @OneToMany(mappedBy = "animalId", cascade = CascadeType.ALL)
     private List<Vaccin> vaccins;
+
+    @OneToOne(mappedBy = "animal")
+    private Adoption adoption;
 }
