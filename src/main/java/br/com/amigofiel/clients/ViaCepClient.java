@@ -1,6 +1,6 @@
 package br.com.amigofiel.clients;
 
-import br.com.amigofiel.domain.dto.request.AddressRequestDTO;
+import br.com.amigofiel.domain.dto.AddressDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface ViaCepClient {
 
     @GetMapping("/{cep}/json")
-    AddressRequestDTO findEnderecoByCep(@PathVariable String cep);
+    AddressDTO findEnderecoByCep(@PathVariable String cep);
 }

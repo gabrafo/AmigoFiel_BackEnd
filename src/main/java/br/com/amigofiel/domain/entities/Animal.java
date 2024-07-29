@@ -3,6 +3,7 @@ import br.com.amigofiel.domain.enums.CurrentStatus;
 import br.com.amigofiel.domain.enums.Size;
 import br.com.amigofiel.domain.enums.Specie;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 public class Animal {
