@@ -18,5 +18,4 @@ public class AnimalService {
         Animal newAnimal = animalMapper.toEntity(animalDTO);
         return animalRepository.save(newAnimal);
     }
-
 }
