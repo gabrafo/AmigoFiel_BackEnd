@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -27,7 +26,7 @@ public class AdoptantService {
         return adoptantMapper.toDTO(adoptantRepository.findById(id).orElseThrow(() -> new NotFoundException("Adoptant not found")));
     }
 
-    public List<Adoptant> listAllAdoptants() {
+    public List<Adoptant> findAllAdoptants() {
         return adoptantRepository.findAll();
     }
     /* TODO()

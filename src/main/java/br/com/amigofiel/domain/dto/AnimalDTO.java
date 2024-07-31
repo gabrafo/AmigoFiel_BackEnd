@@ -2,6 +2,7 @@ package br.com.amigofiel.domain.dto;
 
 import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.domain.entities.Adoption;
+import br.com.amigofiel.domain.entities.Animal;
 import br.com.amigofiel.domain.entities.Vaccin;
 import br.com.amigofiel.domain.enums.CurrentStatus;
 import br.com.amigofiel.domain.enums.Size;
@@ -27,4 +28,22 @@ public record AnimalDTO(
         List<Vaccin> vaccins,
         Adoption adoption
         ){
+
+    public AnimalDTO(Animal animal) {
+        this(
+                animal.getName(),
+                animal.getSpecie(),
+                animal.getBreed(),
+                animal.getBirthDate(),
+                animal.getSex(),
+                animal.getWeight(),
+                animal.getSize(),
+                animal.isNeutered(),
+                animal.getAddress(),
+                animal.getRegistrationDate(),
+                animal.getCurrentStatus(),
+                animal.getVaccins(),
+                animal.getAdoption()
+        );
+    }
 }
