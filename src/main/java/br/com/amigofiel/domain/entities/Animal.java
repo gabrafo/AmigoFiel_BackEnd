@@ -65,4 +65,21 @@ public class Animal {
 
     @OneToOne(mappedBy = "animal")
     private Adoption adoption;
+
+    public Animal(String name, Specie specie, String breed, Date birthDate, char sex, double weight, Size size, boolean neutered,
+                  Address address, Date registrationDate, CurrentStatus currentStatus, List<Vaccin> vaccins, Adoption adoption) {
+        this.name = name;
+        this.specie = specie;
+        this.breed = breed;
+        this.birthDate = birthDate;
+        this.sex = sex;
+        this.weight = weight;
+        this.size = size;
+        this.neutered = neutered;
+        this.address = address;
+        this.registrationDate = registrationDate;
+        this.currentStatus = currentStatus;
+        this.vaccins = vaccins;
+        this.adoption = adoption;
+    }
 }
