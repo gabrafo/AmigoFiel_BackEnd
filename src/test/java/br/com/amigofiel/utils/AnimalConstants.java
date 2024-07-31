@@ -12,10 +12,11 @@ import java.sql.Date;
 import java.util.List;
 
 public class AnimalConstants {
+
    public static final Address ADDRESS = new Address(1L, "zipCode","street", "neighbourhood",
            "city", 1, FederalUnit.MG);
+
    public static final Animal ANIMAL =  new Animal(
-           1L,
            "name",
            Specie.DOG,
            "breed",
@@ -30,6 +31,7 @@ public class AnimalConstants {
            List.of(), // Supondo que não há vacinas inicialmente
            null // Supondo que não há adoção inicialmente
    );
+
    public static final AnimalDTO ANIMAL_DTO = new AnimalDTO(
            "name",
            Specie.DOG,
@@ -44,6 +46,38 @@ public class AnimalConstants {
            CurrentStatus.AVAILABLE,
            List.of(), // Supondo que não há vacinas inicialmente
            null // Supondo que não há adoção inicialmente
+   );
+
+   public static final Animal INVALID_ANIMAL = new Animal(
+            "",
+           null,
+           "",
+           null,
+           'M',
+           -1.0,
+           null,
+           true,
+           null,
+           null,
+           null,
+           List.of(),
+           null
+   );
+
+   public static final AnimalDTO INVALID_ANIMAL_DTO = new AnimalDTO(
+           "",
+           null,
+           "",
+           null,
+           'M',
+           -1.0,
+           null,
+           true,
+           null,
+           null,
+           null,
+           List.of(),
+           null
    );
 
 }
