@@ -2,6 +2,7 @@ package br.com.amigofiel.services;
 
 import br.com.amigofiel.domain.dto.AnimalDTO;
 import br.com.amigofiel.domain.entities.Animal;
+import br.com.amigofiel.exceptions.NotFoundException;
 import br.com.amigofiel.mappers.AnimalMapper;
 import br.com.amigofiel.repositories.AnimalRepository;
 import lombok.AllArgsConstructor;
@@ -18,4 +19,13 @@ public class AnimalService {
         Animal newAnimal = animalMapper.toEntity(animalDTO);
         return animalRepository.save(newAnimal);
     }
+
+    public AnimalDTO findById(Long id) {
+        return animalMapper.toDTO(animalRepository.findById(id).orElseThrow(() -> new NotFoundException("Animal not found")));
+    }
+
+    public void delete(long id) {
+        animalRepository.deleteById(id);
+    }
+
 }
