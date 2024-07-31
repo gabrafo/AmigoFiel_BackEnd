@@ -2,6 +2,7 @@ package br.com.amigofiel.services;
 
 import br.com.amigofiel.domain.dto.AdoptantDTO;
 import br.com.amigofiel.domain.entities.Adoptant;
+import br.com.amigofiel.exceptions.NotFoundException;
 import br.com.amigofiel.mappers.AdoptantMapper;
 import br.com.amigofiel.repositories.AdoptantRepository;
 import lombok.AllArgsConstructor;
@@ -22,10 +23,10 @@ public class AdoptantService {
         return adoptantRepository.save(newAdoptant);
     }
 
-    public Optional<Adoptant> findAdoptantById(AdoptantDTO adoptantDTO) {
-        Adoptant newAdoptant = adoptantMapper.toEntity(adoptantDTO);
-        return adoptantRepository.findById(newAdoptant.getId());
+    public AdoptantDTO findAdoptantById(Long id) {
+        return adoptantMapper.toDTO(adoptantRepository.findById(id).orElseThrow(() -> new NotFoundException("Adoptant not found")));
     }
+
     public List<Adoptant> listAllAdoptants() {
         return adoptantRepository.findAll();
     }
