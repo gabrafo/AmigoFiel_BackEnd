@@ -7,6 +7,7 @@ import br.com.amigofiel.domain.enums.CurrentStatus;
 import br.com.amigofiel.domain.enums.Size;
 import br.com.amigofiel.domain.enums.Specie;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.sql.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ public record AnimalDTO(
         String breed,
         Date birthDate,
         char sex,
-        double weight,
+        @Positive double weight,
         @NotNull Size size,
         @NotNull boolean neutered,
         @NotNull Address address,
