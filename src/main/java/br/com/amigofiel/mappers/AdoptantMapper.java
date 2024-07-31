@@ -8,4 +8,5 @@ import org.mapstruct.Mapper;
 public interface AdoptantMapper {
 
     Adoptant toEntity(AdoptantDTO adoptantDTO);
+    AdoptantDTO toDTO(Adoptant adoptant);
 }
