@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/adoptants")
@@ -41,11 +40,11 @@ public class AdoptantController {
             adoptant.setUser(adoptantDTO.user());
 
             return ResponseEntity.ok(adoptant);
-        }
-        else {
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
+
     @GetMapping("list_adoptants")
     public ResponseEntity<List<AdoptantDTO>> listAdoptants() {
         List<Adoptant> adoptants = adoptantService.findAllAdoptants();
@@ -74,14 +73,18 @@ public class AdoptantController {
             adoptant.setId(adoptantDTO.id());
             adoptantService.deleteAdoptantById(adoptantDTO);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body("Adoptant " + adoptant.getName() + " deleted successfully!");
-        }
-        else {
+        } else {
             throw new RuntimeException("Not found!");
         }
     }
-    /*
-    TODO()
-    @PutMapping("adoptants/{id}")
-    public ResponseEntity<Adoptant> updateAdoptant(@PathVariable("id") Long id) {
-    } */
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AdoptantDTO> updateAdoptant(@RequestBody Adoptant adoptant) {
+        try {
+            AdoptantDTO updatedAdoptant = adoptantService.updateAdoptant(adoptant);
+            return ResponseEntity.ok(updatedAdoptant);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
