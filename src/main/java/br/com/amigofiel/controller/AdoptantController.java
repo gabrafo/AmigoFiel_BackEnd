@@ -77,11 +77,11 @@ public class AdoptantController {
         }
         else {
             throw new RuntimeException("Not found!");
+        }
     }
-        /* TODO()
-        @PutMapping("adoptants/{id}")
-        public ResponseEntity<Adoptant> updateAdoptant(@PathVariable("id") Long id) {
-
-        } */
-    }
+    /*
+    TODO()
+    @PutMapping("adoptants/{id}")
+    public ResponseEntity<Adoptant> updateAdoptant(@PathVariable("id") Long id) {
+    } */
 }
