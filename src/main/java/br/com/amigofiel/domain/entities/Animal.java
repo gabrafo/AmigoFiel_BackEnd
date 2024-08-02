@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -81,5 +82,33 @@ public class Animal {
         this.currentStatus = currentStatus;
         this.vaccins = vaccins;
         this.adoption = adoption;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Animal animal = (Animal) o;
+        return getSex() == animal.getSex() && Double.compare(getWeight(), animal.getWeight()) == 0 && isNeutered() == animal.isNeutered() && Objects.equals(getId(), animal.getId()) && Objects.equals(getName(), animal.getName()) && getSpecie() == animal.getSpecie() && Objects.equals(getBreed(), animal.getBreed()) && Objects.equals(getBirthDate(), animal.getBirthDate()) && getSize() == animal.getSize() && Objects.equals(getAddress(), animal.getAddress()) && Objects.equals(getRegistrationDate(), animal.getRegistrationDate()) && getCurrentStatus() == animal.getCurrentStatus() && Objects.equals(getVaccins(), animal.getVaccins()) && Objects.equals(getAdoption(), animal.getAdoption());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hashCode(getId());
+        result = 31 * result + Objects.hashCode(getName());
+        result = 31 * result + Objects.hashCode(getSpecie());
+        result = 31 * result + Objects.hashCode(getBreed());
+        result = 31 * result + Objects.hashCode(getBirthDate());
+        result = 31 * result + getSex();
+        result = 31 * result + Double.hashCode(getWeight());
+        result = 31 * result + Objects.hashCode(getSize());
+        result = 31 * result + Boolean.hashCode(isNeutered());
+        result = 31 * result + Objects.hashCode(getAddress());
+        result = 31 * result + Objects.hashCode(getRegistrationDate());
+        result = 31 * result + Objects.hashCode(getCurrentStatus());
+        result = 31 * result + Objects.hashCode(getVaccins());
+        result = 31 * result + Objects.hashCode(getAdoption());
+        return result;
     }
 }

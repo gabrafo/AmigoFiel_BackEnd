@@ -2,6 +2,7 @@ package br.com.amigofiel.utils;
 
 import br.com.amigofiel.domain.dto.AnimalDTO;
 import br.com.amigofiel.domain.entities.Address;
+import br.com.amigofiel.domain.entities.Adoption;
 import br.com.amigofiel.domain.entities.Animal;
 import br.com.amigofiel.domain.enums.CurrentStatus;
 import br.com.amigofiel.domain.enums.FederalUnit;
@@ -46,6 +47,38 @@ public class AnimalConstants {
            CurrentStatus.AVAILABLE,
            List.of(), // Supondo que não há vacinas inicialmente
            null // Supondo que não há adoção inicialmente
+   );
+
+   public static final Animal UPDATED_ANIMAL = new Animal(
+           "name",
+           Specie.CAT, // Dado alterado
+           "breed",
+           Date.valueOf("2020-01-01"),
+           'M',
+           30.0,
+           Size.MEDIUM,
+           true,
+           ADDRESS,
+           Date.valueOf("2021-06-15"),
+           CurrentStatus.ADOPTED, // Dado alterado
+           List.of(),
+           new Adoption()
+   );
+
+   public static final AnimalDTO UPDATED_ANIMAL_DTO = new AnimalDTO(
+           "name",
+           Specie.CAT, // Dado alterado
+           "breed",
+           Date.valueOf("2020-01-01"),
+           'M',
+           30.0,
+           Size.MEDIUM,
+           true,
+           ADDRESS,
+           Date.valueOf("2021-06-15"),
+           CurrentStatus.ADOPTED, // Dado alterado
+           List.of(),
+           new Adoption()
    );
 
    public static final Animal INVALID_ANIMAL = new Animal(

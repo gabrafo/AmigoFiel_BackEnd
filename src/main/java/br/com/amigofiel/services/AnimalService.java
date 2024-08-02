@@ -1,7 +1,9 @@
 package br.com.amigofiel.services;
 
 import br.com.amigofiel.domain.dto.AnimalDTO;
+import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.domain.entities.Animal;
+import br.com.amigofiel.domain.entities.Vaccin;
 import br.com.amigofiel.exceptions.NotFoundException;
 import br.com.amigofiel.mappers.AnimalMapper;
 import br.com.amigofiel.repositories.AnimalRepository;
@@ -32,9 +34,24 @@ public class AnimalService {
         return animals.stream().map(AnimalDTO::new).collect(Collectors.toList());
     }
 
-    public AnimalDTO updateAnimal(Long id, AnimalDTO animalDTO) {
-        // TODO()
-        return  null;
+    public Animal updateAnimal(Long id, AnimalDTO animalDTO) {
+        Animal updatedAnimal = animalRepository.findById(id).orElseThrow(() -> new NotFoundException("Animal not found"));
+
+        updatedAnimal.setName(animalDTO.name());
+        updatedAnimal.setSpecie(animalDTO.specie());
+        updatedAnimal.setBreed(animalDTO.breed());
+        updatedAnimal.setBirthDate(animalDTO.birthDate());
+        updatedAnimal.setSex(animalDTO.sex());
+        updatedAnimal.setWeight(animalDTO.weight());
+        updatedAnimal.setSize(animalDTO.size());
+        updatedAnimal.setNeutered(animalDTO.neutered());
+        updatedAnimal.setAddress(animalDTO.address());
+        updatedAnimal.setRegistrationDate(animalDTO.registrationDate());
+        updatedAnimal.setCurrentStatus(animalDTO.currentStatus());
+        updatedAnimal.setVaccins(animalDTO.vaccins());
+        updatedAnimal.setAdoption(animalDTO.adoption());
+
+        return animalRepository.save(updatedAnimal);
     }
 
     public void deleteAnimalById(long id) {

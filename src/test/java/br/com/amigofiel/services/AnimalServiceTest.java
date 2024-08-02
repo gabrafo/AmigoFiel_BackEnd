@@ -9,6 +9,9 @@ import static org.mockito.Mockito.when;
 
 import br.com.amigofiel.domain.dto.AnimalDTO;
 import br.com.amigofiel.domain.entities.Animal;
+import br.com.amigofiel.domain.enums.CurrentStatus;
+import br.com.amigofiel.domain.enums.Size;
+import br.com.amigofiel.domain.enums.Specie;
 import br.com.amigofiel.exceptions.NotFoundException;
 import br.com.amigofiel.mappers.AnimalMapper;
 import br.com.amigofiel.repositories.AnimalRepository;
@@ -18,6 +21,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +58,7 @@ public class AnimalServiceTest {
     public void createAnimalAnimal_WithInvalidData_ThrowsException(){
 
         // Arrange
-        when(animalRepository.save(animalMapper.toEntity(INVALID_ANIMAL_DTO))).thenThrow(RuntimeException.class);
+        when(animalRepository.save(INVALID_ANIMAL)).thenThrow(RuntimeException.class);
 
         // Act & Assert
         assertThatThrownBy(() -> animalService.createAnimal(INVALID_ANIMAL_DTO)).isInstanceOf(RuntimeException.class);
@@ -116,6 +120,41 @@ public class AnimalServiceTest {
 
         // Assert
         assertThat(sut).isEmpty();
+    }
+
+    @Test
+    public void updateAnimalById_WithValidId_UpdatesAnimal(){
+
+        // Arrange
+        Animal originalAnimal =  new Animal(
+                "name",
+                Specie.DOG,
+                "breed",
+                Date.valueOf("2020-01-01"),
+                'M',
+                30.0,
+                Size.MEDIUM,
+                true,
+                ADDRESS,
+                Date.valueOf("2021-06-15"),
+                CurrentStatus.AVAILABLE,
+                List.of(), // Supondo que não há vacinas inicialmente
+                null // Supondo que não há adoção inicialmente
+        );
+        when(animalRepository.findById(anyLong())).thenReturn(Optional.of(ANIMAL));
+        when(animalRepository.save(any())).thenReturn(UPDATED_ANIMAL);
+
+        // Act
+        Animal sut = animalService.updateAnimal(1L, UPDATED_ANIMAL_DTO);
+
+        // Assert
+        assertThat(sut).isNotNull();
+        assertThat(sut).isNotEqualTo(originalAnimal);
+    }
+
+    @Test
+    public void updateAnimalById_WithInvalidId_ThrowsException(){
+        // TODO()
     }
 
     @Test
