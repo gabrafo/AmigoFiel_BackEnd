@@ -6,7 +6,7 @@ import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.exceptions.ClientException;
 import br.com.amigofiel.exceptions.InvalidEntryException;
 import br.com.amigofiel.mappers.AddressMapper;
-import br.com.amigofiel.mappers.AddressRepository;
+import br.com.amigofiel.repositories.AddressRepository;
 import feign.FeignException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;

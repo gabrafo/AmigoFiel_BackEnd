@@ -1,4 +1,4 @@
-package br.com.amigofiel.mappers;
+package br.com.amigofiel.repositories;
 
 import br.com.amigofiel.domain.entities.Address;
 import org.springframework.data.jpa.repository.JpaRepository;

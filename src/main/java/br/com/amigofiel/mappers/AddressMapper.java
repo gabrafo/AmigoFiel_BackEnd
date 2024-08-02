@@ -1,7 +1,6 @@
 package br.com.amigofiel.mappers;
 
 import br.com.amigofiel.domain.dto.AddressDTO;
-import br.com.amigofiel.domain.dto.AdoptantDTO;
 import br.com.amigofiel.domain.entities.Address;
 import org.mapstruct.Mapper;
 
@@ -9,5 +8,5 @@ import org.mapstruct.Mapper;
 public interface AddressMapper {
 
     Address toEntity(AddressDTO addressDTO);
-    AdoptantDTO toDTO(Address address);
+    AddressDTO toDTO(Address address);
 }
