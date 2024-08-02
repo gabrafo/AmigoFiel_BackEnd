@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Tag(name = "ViaCep", description = "API para a qual enviamos uma requisição buscando os dados de endereço")
 public interface ViaCepClient {
 
-    @GetMapping("/{cep}/json")
-    AddressDTO findAddressByZipCode(@PathVariable String cep);
+    @GetMapping("/{zip}/json")
+    AddressDTO findAddressByZipCode(@PathVariable String zip);
 }

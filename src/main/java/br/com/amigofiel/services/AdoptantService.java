@@ -19,9 +19,9 @@ public class AdoptantService {
     private final AdoptantRepository adoptantRepository;
     private final AdoptantMapper adoptantMapper;
 
-    public Adoptant createAdoptant(AdoptantDTO adoptantDTO) {
+    public void createAdoptant(AdoptantDTO adoptantDTO) {
         Adoptant newAdoptant = adoptantMapper.toEntity(adoptantDTO);
-        return adoptantRepository.save(newAdoptant);
+        adoptantRepository.save(newAdoptant);
     }
 
     public AdoptantDTO findAdoptantById(Long id) {

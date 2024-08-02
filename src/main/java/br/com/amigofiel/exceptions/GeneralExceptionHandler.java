@@ -13,4 +13,16 @@ public class GeneralExceptionHandler {
         RestErrorMessage errorMessage = new RestErrorMessage(HttpStatus.NOT_FOUND, e.getMessage());
         return ResponseEntity.status(errorMessage.status()).body(errorMessage);
     }
+
+    @ExceptionHandler(InvalidEntryException.class)
+    public ResponseEntity<RestErrorMessage> invalidEntryException(InvalidEntryException e) {
+        RestErrorMessage errorMessage = new RestErrorMessage(HttpStatus.BAD_REQUEST, e.getMessage());
+        return ResponseEntity.status(errorMessage.status()).body(errorMessage);
+    }
+
+    @ExceptionHandler(ClientException.class)
+    public ResponseEntity<RestErrorMessage> clientException(ClientException e) {
+        RestErrorMessage errorMessage = new RestErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        return ResponseEntity.status(errorMessage.status()).body(errorMessage);
+    }
 }
