@@ -6,10 +6,11 @@ import br.com.amigofiel.domain.entities.Address;
 import jakarta.validation.constraints.NotNull;
 
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public record AdoptantDTO(
+        Long id,
         String name,
         Date birthDate,
         @NotNull Gender gender,
