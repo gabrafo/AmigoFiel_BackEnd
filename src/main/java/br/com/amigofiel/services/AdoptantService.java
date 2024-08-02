@@ -42,7 +42,6 @@ public class AdoptantService {
 
             Address address = existingAdoptant.getAddress();
 
-            address.setHouseNumber(adoptant.getAddress().getHouseNumber());
             address.setStreet(adoptant.getAddress().getStreet());
             address.setNeighbourhood(adoptant.getAddress().getNeighbourhood());
             address.setCity(adoptant.getAddress().getCity());

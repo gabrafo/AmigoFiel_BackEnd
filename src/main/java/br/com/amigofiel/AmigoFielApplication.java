@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 import java.util.List;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = "br.com.amigofiel.clients")
+@EnableFeignClients
 public class AmigoFielApplication {
 
 	public static void main(String[] args) {

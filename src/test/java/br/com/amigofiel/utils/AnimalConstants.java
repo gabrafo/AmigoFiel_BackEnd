@@ -15,7 +15,7 @@ import java.util.List;
 public class AnimalConstants {
 
    public static final Address ADDRESS = new Address(1L, "zipCode","street", "neighbourhood",
-           "city", 1, FederalUnit.MG);
+           "city", FederalUnit.MG);
 
    public static final Animal ANIMAL =  new Animal(
            "name",

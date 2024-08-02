@@ -1,5 +1,6 @@
 package br.com.amigofiel.domain.entities;
 
+import br.com.amigofiel.domain.dto.AddressDTO;
 import br.com.amigofiel.domain.enums.FederalUnit;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,10 +32,15 @@ public class Address {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "house_number", nullable = false)
-    private int houseNumber;
-
     @Column(name = "federal_unit", nullable = false)
     @Enumerated(EnumType.STRING)
     private FederalUnit FU;
+
+    public Address(AddressDTO dto){
+        this.zipCode = dto.zipCode();
+        this.street = dto.street();
+        this.neighbourhood = dto.neighbourhood();
+        this.city = dto.city();
+        this.FU = FederalUnit.valueOf(dto.FU());
+    }
 }

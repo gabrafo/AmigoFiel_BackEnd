@@ -10,6 +10,8 @@ import br.com.amigofiel.repositories.AddressRepository;
 import feign.FeignException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -19,6 +21,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class AddressService {
+
+    private static final Logger logger = LoggerFactory.getLogger(AddressService.class);
 
     @Autowired
     private AddressRepository repository;
@@ -49,15 +53,19 @@ public class AddressService {
                 String errorMessage = violations.stream()
                         .map(ConstraintViolation::getMessage)
                         .collect(Collectors.joining(", "));
-                throw new InvalidEntryException("Dados inválidos! " + errorMessage);
+                logger.error("Dados inválidos recebidos da API ViaCep: {}", errorMessage);
+                throw new InvalidEntryException("Dados inválidos! Erros: " + errorMessage);
             }
 
             Address address = addressMapper.toEntity(addressDTO);
             repository.save(address);
+            logger.info("Endereço salvo com sucesso: {}", address);
             return address;
         } catch (HttpClientErrorException.BadRequest e){
+            logger.error("CEP não encontrado: {}", zip, e);
             throw new InvalidEntryException("CEP não encontrado");
         } catch (FeignException.FeignClientException e){
+            logger.error("Erro ao consultar a API ViaCep para o CEP: {}", zip, e);
             throw new ClientException("Erro ao consultar o CEP");
         }
     }
