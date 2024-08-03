@@ -6,9 +6,11 @@ import br.com.amigofiel.domain.entities.Adoptant;
 import br.com.amigofiel.exceptions.NotFoundException;
 import br.com.amigofiel.mappers.AdoptantMapper;
 import br.com.amigofiel.repositories.AdoptantRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.beans.Transient;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +21,11 @@ public class AdoptantService {
     private final AdoptantRepository adoptantRepository;
     private final AdoptantMapper adoptantMapper;
 
-    public void createAdoptant(AdoptantDTO adoptantDTO) {
+    @Transactional
+    public Adoptant createAdoptant(AdoptantDTO adoptantDTO) {
         Adoptant newAdoptant = adoptantMapper.toEntity(adoptantDTO);
         adoptantRepository.save(newAdoptant);
+        return newAdoptant;
     }
 
     public AdoptantDTO findAdoptantById(Long id) {
