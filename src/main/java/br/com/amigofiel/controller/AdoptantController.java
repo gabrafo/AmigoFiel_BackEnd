@@ -60,7 +60,7 @@ public class AdoptantController {
     @GetMapping(value = "list_adoptants",
             produces = "application/json")
     public ResponseEntity<List<Adoptant>> listAdoptants() {
-        return ResponseEntity.status(HttpStatus.OK).body(adoptantService.findAllAdoptants())
+        return ResponseEntity.status(HttpStatus.OK).body(adoptantService.findAllAdoptants());
     }
 
 
