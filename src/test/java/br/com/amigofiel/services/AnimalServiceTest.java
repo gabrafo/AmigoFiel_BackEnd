@@ -153,7 +153,18 @@ public class AnimalServiceTest {
 
     @Test
     public void updateAnimalById_WithInvalidId_ThrowsException(){
-        // TODO()
+
+        // Act & Assert
+        assertThatThrownBy(() -> animalService.updateAnimal(-1L, INVALID_ANIMAL_DTO)).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void updateAnimalById_WithInvalidData_ThrowsException(){
+        when(animalRepository.findById(anyLong())).thenReturn(Optional.of(ANIMAL));
+        when(animalRepository.save(INVALID_ANIMAL)).thenThrow(RuntimeException.class);
+
+        // Act & Assert
+        assertThatThrownBy(() -> animalService.updateAnimal(1L, INVALID_ANIMAL_DTO)).isInstanceOf(RuntimeException.class);
     }
 
     @Test

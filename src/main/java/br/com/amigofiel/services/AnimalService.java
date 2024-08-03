@@ -50,7 +50,6 @@ public class AnimalService {
         updatedAnimal.setAddress(animalDTO.address());
         updatedAnimal.setRegistrationDate(animalDTO.registrationDate());
         updatedAnimal.setCurrentStatus(animalDTO.currentStatus());
-
         updatedAnimal.setAdoption(animalDTO.adoption());
 
         return animalRepository.save(updatedAnimal);
