@@ -3,6 +3,8 @@ package br.com.amigofiel.controller;
 import br.com.amigofiel.domain.dto.AdoptantDTO;
 import br.com.amigofiel.domain.entities.Adoptant;
 import br.com.amigofiel.services.AdoptantService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +14,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/adoptants")
+@Tag(name = "Adopatant", description = "Endpoints relacionados a Adoptant")
 public class AdoptantController {
-    private final AdoptantService adoptantService;
 
-    public AdoptantController(AdoptantService adoptantService) {
-        this.adoptantService = adoptantService;
-    }
+    @Autowired
+    private AdoptantService adoptantService;
+
 
     @PostMapping("/adoptants")
     public ResponseEntity<String> saveAdoptant(@RequestBody AdoptantDTO adoptantDTO) {
