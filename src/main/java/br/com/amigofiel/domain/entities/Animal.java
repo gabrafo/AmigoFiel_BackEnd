@@ -61,14 +61,11 @@ public class Animal {
     @Enumerated(EnumType.STRING)
     private CurrentStatus currentStatus;
 
-    @OneToMany(mappedBy = "animalId", cascade = CascadeType.ALL)
-    private List<Vaccin> vaccins;
-
-    @OneToOne(mappedBy = "animal")
+    @OneToOne(mappedBy = "adoptedAnimal")
     private Adoption adoption;
 
     public Animal(String name, Specie specie, String breed, Date birthDate, char sex, double weight, Size size, boolean neutered,
-                  Address address, Date registrationDate, CurrentStatus currentStatus, List<Vaccin> vaccins, Adoption adoption) {
+                  Address address, Date registrationDate, CurrentStatus currentStatus, Adoption adoption) {
         this.name = name;
         this.specie = specie;
         this.breed = breed;
@@ -80,7 +77,6 @@ public class Animal {
         this.address = address;
         this.registrationDate = registrationDate;
         this.currentStatus = currentStatus;
-        this.vaccins = vaccins;
         this.adoption = adoption;
     }
 
@@ -90,7 +86,7 @@ public class Animal {
         if (o == null || getClass() != o.getClass()) return false;
 
         Animal animal = (Animal) o;
-        return getSex() == animal.getSex() && Double.compare(getWeight(), animal.getWeight()) == 0 && isNeutered() == animal.isNeutered() && Objects.equals(getId(), animal.getId()) && Objects.equals(getName(), animal.getName()) && getSpecie() == animal.getSpecie() && Objects.equals(getBreed(), animal.getBreed()) && Objects.equals(getBirthDate(), animal.getBirthDate()) && getSize() == animal.getSize() && Objects.equals(getAddress(), animal.getAddress()) && Objects.equals(getRegistrationDate(), animal.getRegistrationDate()) && getCurrentStatus() == animal.getCurrentStatus() && Objects.equals(getVaccins(), animal.getVaccins()) && Objects.equals(getAdoption(), animal.getAdoption());
+        return getSex() == animal.getSex() && Double.compare(getWeight(), animal.getWeight()) == 0 && isNeutered() == animal.isNeutered() && Objects.equals(getId(), animal.getId()) && Objects.equals(getName(), animal.getName()) && getSpecie() == animal.getSpecie() && Objects.equals(getBreed(), animal.getBreed()) && Objects.equals(getBirthDate(), animal.getBirthDate()) && getSize() == animal.getSize() && Objects.equals(getAddress(), animal.getAddress()) && Objects.equals(getRegistrationDate(), animal.getRegistrationDate()) && getCurrentStatus() == animal.getCurrentStatus() && Objects.equals(getAdoption(), animal.getAdoption());
     }
 
     @Override
@@ -107,7 +103,6 @@ public class Animal {
         result = 31 * result + Objects.hashCode(getAddress());
         result = 31 * result + Objects.hashCode(getRegistrationDate());
         result = 31 * result + Objects.hashCode(getCurrentStatus());
-        result = 31 * result + Objects.hashCode(getVaccins());
         result = 31 * result + Objects.hashCode(getAdoption());
         return result;
     }

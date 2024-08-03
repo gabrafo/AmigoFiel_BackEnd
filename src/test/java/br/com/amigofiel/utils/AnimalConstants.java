@@ -1,5 +1,6 @@
 package br.com.amigofiel.utils;
 
+import br.com.amigofiel.domain.dto.AddressDTO;
 import br.com.amigofiel.domain.dto.AnimalDTO;
 import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.domain.entities.Adoption;
@@ -29,7 +30,6 @@ public class AnimalConstants {
            ADDRESS,
            Date.valueOf("2021-06-15"),
            CurrentStatus.AVAILABLE,
-           List.of(), // Supondo que não há vacinas inicialmente
            null // Supondo que não há adoção inicialmente
    );
 
@@ -45,7 +45,6 @@ public class AnimalConstants {
            ADDRESS,
            Date.valueOf("2021-06-15"),
            CurrentStatus.AVAILABLE,
-           List.of(), // Supondo que não há vacinas inicialmente
            null // Supondo que não há adoção inicialmente
    );
 
@@ -61,7 +60,6 @@ public class AnimalConstants {
            ADDRESS,
            Date.valueOf("2021-06-15"),
            CurrentStatus.ADOPTED, // Dado alterado
-           List.of(),
            new Adoption()
    );
 
@@ -77,7 +75,6 @@ public class AnimalConstants {
            ADDRESS,
            Date.valueOf("2021-06-15"),
            CurrentStatus.ADOPTED, // Dado alterado
-           List.of(),
            new Adoption()
    );
 
@@ -93,7 +90,6 @@ public class AnimalConstants {
            null,
            null,
            null,
-           List.of(),
            null
    );
 
@@ -109,7 +105,6 @@ public class AnimalConstants {
            null,
            null,
            null,
-           List.of(),
            null
    );
 

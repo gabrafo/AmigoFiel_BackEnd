@@ -34,13 +34,13 @@ public class Address {
 
     @Column(name = "federal_unit", nullable = false)
     @Enumerated(EnumType.STRING)
-    private FederalUnit FU;
+    private FederalUnit federalUnit;
 
     public Address(AddressDTO dto){
         this.zipCode = dto.zipCode();
         this.street = dto.street();
         this.neighbourhood = dto.neighbourhood();
         this.city = dto.city();
-        this.FU = FederalUnit.valueOf(dto.FU());
+        this.federalUnit = FederalUnit.valueOf(dto.federalUnit());
     }
 }

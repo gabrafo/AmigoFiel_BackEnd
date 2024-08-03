@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/address")
+@RequestMapping("/addresses")
 @Tag(name = "Address", description = "Endpoints para realizar a consulta de CEP usando a API ViaCep")
 public class AddressController {
 

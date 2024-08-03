@@ -1,12 +1,11 @@
 package br.com.amigofiel.services;
 
 import br.com.amigofiel.domain.dto.AnimalDTO;
-import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.domain.entities.Animal;
-import br.com.amigofiel.domain.entities.Vaccin;
 import br.com.amigofiel.exceptions.NotFoundException;
 import br.com.amigofiel.mappers.AnimalMapper;
 import br.com.amigofiel.repositories.AnimalRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +19,11 @@ public class AnimalService {
     private final AnimalRepository animalRepository;
     private final AnimalMapper animalMapper;
 
+    @Transactional
     public Animal createAnimal(AnimalDTO animalDTO) {
         Animal newAnimal = animalMapper.toEntity(animalDTO);
-        return animalRepository.save(newAnimal);
+        animalRepository.save(newAnimal);
+        return newAnimal;
     }
 
     public AnimalDTO findAnimalById(Long id) {
@@ -34,6 +35,7 @@ public class AnimalService {
         return animals.stream().map(AnimalDTO::new).collect(Collectors.toList());
     }
 
+    @Transactional
     public Animal updateAnimal(Long id, AnimalDTO animalDTO) {
         Animal updatedAnimal = animalRepository.findById(id).orElseThrow(() -> new NotFoundException("Animal not found"));
 
@@ -48,12 +50,13 @@ public class AnimalService {
         updatedAnimal.setAddress(animalDTO.address());
         updatedAnimal.setRegistrationDate(animalDTO.registrationDate());
         updatedAnimal.setCurrentStatus(animalDTO.currentStatus());
-        updatedAnimal.setVaccins(animalDTO.vaccins());
+
         updatedAnimal.setAdoption(animalDTO.adoption());
 
         return animalRepository.save(updatedAnimal);
     }
 
+    @Transactional
     public void deleteAnimalById(long id) {
         animalRepository.deleteById(id);
     }

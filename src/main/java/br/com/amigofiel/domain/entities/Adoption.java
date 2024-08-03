@@ -17,13 +17,12 @@ import java.util.UUID;
 public class Adoption {
 
     @jakarta.persistence.Id
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "adoption_id", nullable = false)
-    private List<Animal> adoptedsAnimals;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adopted_animal_id", nullable = false)
+    private Animal adoptedAnimal;
 
     @ManyToOne
     @JoinColumn(name = "adopter_id", nullable = false)

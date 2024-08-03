@@ -3,7 +3,6 @@ package br.com.amigofiel.domain.dto;
 import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.domain.entities.Adoption;
 import br.com.amigofiel.domain.entities.Animal;
-import br.com.amigofiel.domain.entities.Vaccin;
 import br.com.amigofiel.domain.enums.CurrentStatus;
 import br.com.amigofiel.domain.enums.Size;
 import br.com.amigofiel.domain.enums.Specie;
@@ -25,7 +24,6 @@ public record AnimalDTO(
         @NotNull Address address,
         @NotNull Date registrationDate,
         @NotNull CurrentStatus currentStatus,
-        List<Vaccin> vaccins,
         Adoption adoption
         ){
 
@@ -42,7 +40,6 @@ public record AnimalDTO(
                 animal.getAddress(),
                 animal.getRegistrationDate(),
                 animal.getCurrentStatus(),
-                animal.getVaccins(),
                 animal.getAdoption()
         );
     }

@@ -48,7 +48,7 @@ public class AnimalServiceTest {
         when(animalMapper.toEntity(ANIMAL_DTO)).thenReturn(ANIMAL);
 
         // Act
-        Animal sut = animalService.createAnimal(animalMapper.toDTO(ANIMAL));
+        Animal sut = animalService.createAnimal(ANIMAL_DTO);
 
         // Assert
         assertThat(sut).isEqualTo(ANIMAL);
@@ -138,7 +138,6 @@ public class AnimalServiceTest {
                 ADDRESS,
                 Date.valueOf("2021-06-15"),
                 CurrentStatus.AVAILABLE,
-                List.of(), // Supondo que não há vacinas inicialmente
                 null // Supondo que não há adoção inicialmente
         );
         when(animalRepository.findById(anyLong())).thenReturn(Optional.of(ANIMAL));
