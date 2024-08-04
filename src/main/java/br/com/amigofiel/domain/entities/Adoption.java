@@ -21,17 +21,14 @@ public class Adoption {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "adopted_animal_id", nullable = false)
-    @JoinColumn(name = "adopted_animal_id")
+    @JoinColumn(name = "adopted_animal_id", nullable = false)
     private Animal adoptedAnimal;
 
     @ManyToOne
-    // @JoinColumn(name = "adopter_id", nullable = false)
-    @JoinColumn(name = "adopter_id")
+    @JoinColumn(name = "adopter_id", nullable = false)
     private Adoptant adopter;
 
     @OneToOne
-    // @JoinColumn(name = "animal_id", nullable = false)
-    @JoinColumn(name = "animal_id")
+    @JoinColumn(name = "animal_id", nullable = false)
     private Animal animal;
 }
