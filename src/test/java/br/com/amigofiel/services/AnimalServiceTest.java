@@ -44,7 +44,6 @@ public class AnimalServiceTest {
         // Arrange
         when(animalRepository.save(ANIMAL)).thenReturn(ANIMAL);
 
-        when(animalMapper.toDTO(ANIMAL)).thenReturn(ANIMAL_DTO);
         when(animalMapper.toEntity(ANIMAL_DTO)).thenReturn(ANIMAL);
 
         // Act

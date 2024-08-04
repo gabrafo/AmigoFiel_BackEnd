@@ -20,15 +20,10 @@ public class Adoption {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adopted_animal_id", nullable = false)
-    private Animal adoptedAnimal;
-
     @ManyToOne
     @JoinColumn(name = "adopter_id", nullable = false)
     private Adoptant adopter;
 
-    @OneToOne
-    @JoinColumn(name = "animal_id", nullable = false)
+    @OneToOne(mappedBy = "adoption")
     private Animal animal;
 }

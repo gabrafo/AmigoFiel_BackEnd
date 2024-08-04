@@ -6,17 +6,15 @@ import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.domain.entities.Adoption;
 import br.com.amigofiel.domain.entities.Animal;
 import br.com.amigofiel.domain.enums.CurrentStatus;
-import br.com.amigofiel.domain.enums.FederalUnit;
 import br.com.amigofiel.domain.enums.Size;
 import br.com.amigofiel.domain.enums.Specie;
 
 import java.sql.Date;
-import java.util.List;
 
 public class AnimalConstants {
 
-   public static final Address ADDRESS = new Address(1L, "zipCode","street", "neighbourhood",
-           "city", FederalUnit.MG);
+   public static final Address ADDRESS = new Address (new AddressDTO("zipCode","street", "neighbourhood",
+           "city", "MG"));
 
    public static final Animal ANIMAL =  new Animal(
            "name",
