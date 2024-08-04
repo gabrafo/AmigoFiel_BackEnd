@@ -3,14 +3,14 @@ import br.com.amigofiel.domain.enums.CurrentStatus;
 import br.com.amigofiel.domain.enums.Size;
 import br.com.amigofiel.domain.enums.Specie;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.sql.Date;
-import java.util.List;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -29,6 +29,7 @@ public class Animal {
 
     @Column(name = "specie", nullable = false)
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Specie cannot be null")
     private Specie specie;
 
     @Column(name = "breed")
@@ -41,27 +42,34 @@ public class Animal {
     private char sex;
 
     @Column(name = "weight")
+    @Positive
     private double weight;
 
     @Column(name = "size", nullable = false)
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Size cannot be null")
     private Size size;
 
     @Column(name = "neutered", nullable = false)
+    @NotNull(message = "Neutering information cannot be null")
     private boolean neutered; // Castração
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", nullable = false)
+    @NotNull(message = "Address cannot be null")
     private Address address;
 
     @Column(name = "registration_date", nullable = false) // Data que o animal foi postado
+    @NotNull(message = "Registration date cannot be null")
     private Date registrationDate;
 
     @Column(name = "current_status", nullable = false)
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "Current status cannot be null")
     private CurrentStatus currentStatus;
 
-    @OneToOne(mappedBy = "adoptedAnimal")
+    @OneToOne
+    @JoinColumn(name = "adoption_id")
     private Adoption adoption;
 
     public Animal(String name, Specie specie, String breed, Date birthDate, char sex, double weight, Size size, boolean neutered,
@@ -81,29 +89,8 @@ public class Animal {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Animal animal = (Animal) o;
-        return getSex() == animal.getSex() && Double.compare(getWeight(), animal.getWeight()) == 0 && isNeutered() == animal.isNeutered() && Objects.equals(getId(), animal.getId()) && Objects.equals(getName(), animal.getName()) && getSpecie() == animal.getSpecie() && Objects.equals(getBreed(), animal.getBreed()) && Objects.equals(getBirthDate(), animal.getBirthDate()) && getSize() == animal.getSize() && Objects.equals(getAddress(), animal.getAddress()) && Objects.equals(getRegistrationDate(), animal.getRegistrationDate()) && getCurrentStatus() == animal.getCurrentStatus() && Objects.equals(getAdoption(), animal.getAdoption());
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(obj, this); // Compara os objetos e não endereços de memória
     }
 
-    @Override
-    public int hashCode() {
-        int result = Objects.hashCode(getId());
-        result = 31 * result + Objects.hashCode(getName());
-        result = 31 * result + Objects.hashCode(getSpecie());
-        result = 31 * result + Objects.hashCode(getBreed());
-        result = 31 * result + Objects.hashCode(getBirthDate());
-        result = 31 * result + getSex();
-        result = 31 * result + Double.hashCode(getWeight());
-        result = 31 * result + Objects.hashCode(getSize());
-        result = 31 * result + Boolean.hashCode(isNeutered());
-        result = 31 * result + Objects.hashCode(getAddress());
-        result = 31 * result + Objects.hashCode(getRegistrationDate());
-        result = 31 * result + Objects.hashCode(getCurrentStatus());
-        result = 31 * result + Objects.hashCode(getAdoption());
-        return result;
-    }
 }

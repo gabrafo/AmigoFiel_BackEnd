@@ -3,6 +3,7 @@ package br.com.amigofiel.domain.entities;
 import br.com.amigofiel.domain.dto.AddressDTO;
 import br.com.amigofiel.domain.enums.FederalUnit;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,10 +18,11 @@ import lombok.Setter;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "zip_code", nullable = false)
+    @NotEmpty()
     private String zipCode;
 
     @Column(name = "street", nullable = false)

@@ -44,7 +44,6 @@ public class AnimalServiceTest {
         // Arrange
         when(animalRepository.save(ANIMAL)).thenReturn(ANIMAL);
 
-        when(animalMapper.toDTO(ANIMAL)).thenReturn(ANIMAL_DTO);
         when(animalMapper.toEntity(ANIMAL_DTO)).thenReturn(ANIMAL);
 
         // Act
@@ -153,7 +152,18 @@ public class AnimalServiceTest {
 
     @Test
     public void updateAnimalById_WithInvalidId_ThrowsException(){
-        // TODO()
+
+        // Act & Assert
+        assertThatThrownBy(() -> animalService.updateAnimal(-1L, INVALID_ANIMAL_DTO)).isInstanceOf(RuntimeException.class);
+    }
+
+    @Test
+    public void updateAnimalById_WithInvalidData_ThrowsException(){
+        when(animalRepository.findById(anyLong())).thenReturn(Optional.of(ANIMAL));
+        when(animalRepository.save(INVALID_ANIMAL)).thenThrow(RuntimeException.class);
+
+        // Act & Assert
+        assertThatThrownBy(() -> animalService.updateAnimal(1L, INVALID_ANIMAL_DTO)).isInstanceOf(RuntimeException.class);
     }
 
     @Test
