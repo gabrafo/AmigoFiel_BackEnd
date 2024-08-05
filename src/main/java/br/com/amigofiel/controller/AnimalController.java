@@ -44,6 +44,25 @@ public class AnimalController {
         return ResponseEntity.status(HttpStatus.OK).body(animalService.findAllAnimals());
     }
 
+    @Operation(summary = "Busca um animal por ID",
+            description = "Busca um animal no Banco de Dados usando o ID como parâmetro.",
+            tags = {"Animal"},
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "200",
+                            content = @Content(schema = @Schema(implementation = AnimalDTO.class))
+                    ),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Forbidden", responseCode = "403", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
+            }
+    )
+    @GetMapping(value="/{id}",
+            produces = "application/json")
+    public ResponseEntity<AnimalDTO> getAnimalById(@PathVariable("idAnimal") Long idAnimal) {
+        return ResponseEntity.status(HttpStatus.OK).body(animalService.findAnimalById(idAnimal));
+    }
+
     @Operation(summary = "Cria um animal",
             description = "Cria um novo animal no Banco de Dados.",
             tags = {"Animal"},
