@@ -26,6 +26,7 @@ public class User {
     private String password;
 
     @OneToOne
-    @JoinColumn(name = "adoptant_id", nullable = false)
+    // @JoinColumn(name = "adoptant_id", nullable = false)
+    @JoinColumn(name = "adoptant_id")
     private Adoptant adoptant;
 }
