@@ -59,8 +59,8 @@ public class AnimalController {
     )
     @GetMapping(value="/{id}",
             produces = "application/json")
-    public ResponseEntity<AnimalDTO> getAnimalById(@PathVariable("id") Long idAnimal) {
-        return ResponseEntity.status(HttpStatus.OK).body(animalService.findAnimalById(idAnimal));
+    public ResponseEntity<AnimalDTO> getAnimalById(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(animalService.findAnimalById(id));
     }
 
     @Operation(summary = "Cria um animal",
