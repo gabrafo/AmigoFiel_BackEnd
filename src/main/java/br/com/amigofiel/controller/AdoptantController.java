@@ -64,8 +64,6 @@ public class AdoptantController {
     }
 
 
-
-
     @GetMapping("/{id}")
     public ResponseEntity<Adoptant> findAdoptantById(@PathVariable("id") Long id) {
         AdoptantDTO adoptantDTO = adoptantService.findAdoptantById(id);

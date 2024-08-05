@@ -46,11 +46,13 @@ public class AnimalServiceTest {
 
         when(animalMapper.toEntity(ANIMAL_DTO)).thenReturn(ANIMAL);
 
+        when(animalMapper.toDTO(ANIMAL)).thenReturn(ANIMAL_DTO);
+
         // Act
-        Animal sut = animalService.createAnimal(ANIMAL_DTO);
+        AnimalDTO sut = animalService.createAnimal(ANIMAL_DTO);
 
         // Assert
-        assertThat(sut).isEqualTo(ANIMAL);
+        assertThat(sut).isEqualTo(ANIMAL_DTO);
     }
 
     @Test
@@ -139,15 +141,17 @@ public class AnimalServiceTest {
                 CurrentStatus.AVAILABLE,
                 null // Supondo que não há adoção inicialmente
         );
+
         when(animalRepository.findById(anyLong())).thenReturn(Optional.of(ANIMAL));
         when(animalRepository.save(any())).thenReturn(UPDATED_ANIMAL);
+        when(animalMapper.toDTO(UPDATED_ANIMAL)).thenReturn(UPDATED_ANIMAL_DTO);
 
         // Act
-        Animal sut = animalService.updateAnimal(1L, UPDATED_ANIMAL_DTO);
+        AnimalDTO sut = animalService.updateAnimal(1L, UPDATED_ANIMAL_DTO);
 
         // Assert
         assertThat(sut).isNotNull();
-        assertThat(sut).isNotEqualTo(originalAnimal);
+        assertThat(sut).isNotEqualTo(animalMapper.toDTO(originalAnimal));
     }
 
     @Test

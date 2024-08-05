@@ -20,10 +20,10 @@ public class AnimalService {
     private final AnimalMapper animalMapper;
 
     @Transactional
-    public Animal createAnimal(AnimalDTO animalDTO) {
+    public AnimalDTO createAnimal(AnimalDTO animalDTO) {
         Animal newAnimal = animalMapper.toEntity(animalDTO);
         animalRepository.save(newAnimal);
-        return newAnimal;
+        return animalMapper.toDTO(newAnimal);
     }
 
     public AnimalDTO findAnimalById(Long id) {
@@ -36,7 +36,7 @@ public class AnimalService {
     }
 
     @Transactional
-    public Animal updateAnimal(Long id, AnimalDTO animalDTO) {
+    public AnimalDTO updateAnimal(Long id, AnimalDTO animalDTO) {
         Animal updatedAnimal = animalRepository.findById(id).orElseThrow(() -> new NotFoundException("Animal not found"));
 
         updatedAnimal.setName(animalDTO.name());
@@ -52,11 +52,12 @@ public class AnimalService {
         updatedAnimal.setCurrentStatus(animalDTO.currentStatus());
         updatedAnimal.setAdoption(animalDTO.adoption());
 
-        return animalRepository.save(updatedAnimal);
+        return animalMapper.toDTO(animalRepository.save(updatedAnimal));
     }
 
     @Transactional
-    public void deleteAnimalById(long id) {
+    public String deleteAnimalById(long id) {
         animalRepository.deleteById(id);
+        return "Animal successfully deleted";
     }
 }
