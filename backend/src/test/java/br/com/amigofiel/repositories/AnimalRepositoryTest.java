@@ -162,8 +162,7 @@ public class AnimalRepositoryTest {
         assertThat(removedAnimal).isNull();
     }
 
-
-    /* @Sql("/import_animals_and_addresses.sql")
+    @Sql("/import_animals_and_addresses.sql")
     @Test
     public void removeAnimal_WithInvalidId_ReturnsEmpty(){
         assertThat(testEntityManager.find(Animal.class, 4L)).isNull();
@@ -178,5 +177,4 @@ public class AnimalRepositoryTest {
         // Verifica que o animal com ID 4L ainda não existe após a tentativa de exclusão
         assertThat(testEntityManager.find(Animal.class, 4L)).isNull();
     }
-    */
 }
