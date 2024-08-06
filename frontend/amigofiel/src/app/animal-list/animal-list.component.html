@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Animal List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Specie</th>
+          <th>Breed</th>
+          <th>Birth Date</th>
+          <th>Sex</th>
+          <th>Weight</th>
+          <th>Size</th>
+          <th>Neutered</th>
+          <th>Address</th>
+          <th>Registration Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let animal of animals">
+          <td>{{ animal.name }}</td>
+          <td>{{ animal.specie }}</td>
+          <td>{{ animal.breed }}</td>
+          <td>{{ animal.birthDate | date }}</td>
+          <td>{{ animal.sex }}</td>
+          <td>{{ animal.weight }}</td>
+          <td>{{ animal.size }}</td>
+          <td>{{ animal.neutered ? 'Yes' : 'No' }}</td>
+          <td>{{ animal.address.street }}, {{ animal.address.city }}</td>
+          <td>{{ animal.registrationDate | date }}</td>
+          <td>{{ animal.currentStatus }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteAnimal(animal.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

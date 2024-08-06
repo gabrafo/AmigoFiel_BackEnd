@@ -1,0 +1,29 @@
+<section class="contato">
+    <div class="ContatoDivGeral">
+        <div class="DivTxt">
+            <h1>Entre em Contato Conosco</h1>
+            <p>Tem alguma dúvida ou precisa de mais informações? Preencha o formulário abaixo e nossa equipe entrará em contato com você o mais rápido possível. Estamos aqui para ajudar e responder a todas as suas perguntas.</p>
+        </div>
+        <div class="DivForm">
+            <form action="" method="post">
+                <div>
+                    <label for="Nome">Nome:</label>
+                    <input [(ngModel)]="NomeInput" type="text" name="Nome" id="Nome" placeholder="Digite seu nome completo">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" [(ngModel)]="EmailInput" name="email" id="email" placeholder="Seu melhor Email">
+                </div>
+                <div>
+                    <label for="numero">Número:</label>
+                    <input type="number" [(ngModel)]="NumInput" name="numero" id="numero" placeholder="(00)0 0000-0000">
+                </div>
+                <div>
+                    <label for="txt">Texto:</label>
+                    <textarea id="message" [(ngModel)]="MsmInput" name="message" placeholder="Escreva sua mensagem aqui..."></textarea>
+                </div>
+                <input type="button" value="Enviar" (click)="EnviarMsm()" class="enviarDuvida">
+            </form>
+        </div>
+    </div>
+</section>

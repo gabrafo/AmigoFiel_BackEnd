@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    width: 100vw;
+    height: 100vh;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem */
+}
+  
+::-webkit-scrollbar-track {
+    background: #F5F5DC; /* Cor do fundo da trilha da barra de rolagem */
+    border-radius: 10px; /* Borda arredondada da trilha */
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #003366; /* Cor da barra de rolagem */
+    border-radius: 5px; /* Borda arredondada da barra de rolagem */
+}
+  
+  

@@ -1,0 +1,66 @@
+<section class="SectionIncial">
+    <div class="DivGeralSectionInicial">
+        <div class="SectionIncial_Text">
+            <h2>Adote um amigo fiel e mude uma vida para sempre.</h2>
+            <p>Na Amigo Fiel, acreditamos que cada cachorro merece um lar amoroso. Quando você adota, não está apenas levando para casa um novo amigo; está salvando uma vida. Nossos cachorros estão esperando por alguém como você para lhes dar a oportunidade de uma segunda chance. Adotar é um ato de amor que transforma não só a vida do animal, mas também a sua. Junte-se a nós e faça a diferença hoje mesmo!</p>    
+            <button routerLink="adote">ADOTE AGORA</button>      
+        </div>
+        <div class="SectionIncial_Img">
+            <img src="ImgInicial.png" alt="Imagem Inicial de um pug">
+        </div>
+    </div>
+</section>
+
+<section class="ApresetacaoSobre">
+    <div class="DivGeralSectionApresetacaoSobre">
+        <div class="ApresetacaoSobre_texto">
+            <h2>Nossa Jornada de Amor e Dedicação</h2>
+            <p class="ApresetacaoSobre_texto_p1">A Amigo Fiel nasceu do desejo de proporcionar uma vida melhor para cachorros abandonados e maltratados. Nossa jornada começou com um pequeno grupo de voluntários apaixonados por animais, dedicados a resgatar, cuidar e encontrar lares amorosos para esses amigos de quatro patas. Cada resgate é um ato de amor e esperança, uma chance de oferecer uma segunda oportunidade a cães que foram esquecidos ou negligenciados.</p>
+            <p class="ApresetacaoSobre_texto_p2">Ao longo dos anos, nossa missão cresceu e se fortaleceu. Com a ajuda de nossos parceiros e doadores, conseguimos salvar centenas de vidas e transformar histórias de sofrimento em contos de alegria e companheirismo. Na Amigo Fiel, acreditamos que cada cachorro merece uma família e um lar onde possa ser amado e cuidado. Junte-se a nós nesta missão e ajude-nos a continuar escrevendo finais felizes para esses animais incríveis.</p>
+        </div>
+        <div class="ApresetacaoSobre_img">
+            <img src="ImgSobreNos.png" alt="Imagem Dogs da section sobre a ong">
+        </div>
+    </div>
+</section>
+
+<section class="ComoAjudar">
+    <div class="DivGeralAjuda">
+        <h2>Como Você Pode Ajudar</h2>
+        <div class="DivAjudaSuperior">
+          <ul>
+            <li (click)="showInfo('Ração e Alimentos', TextAlimento)">
+              <i class="fas fa-drumstick-bite"></i> <strong>Ração</strong>
+            </li>
+            <li (click)="showInfo('Transporte e Logística', TextTransport)">
+              <i class="fas fa-truck"></i> <strong>Transporte</strong>
+            </li>
+            <li (click)="showInfo('Brinquedos para Cachorros', TextJoy)">
+              <i class="fas fa-futbol"></i> <strong>Brinquedos</strong>
+            </li>
+            <li (click)="showInfo('Doações Monetárias', TextMoney)">
+              <i class="fas fa-hand-holding-usd"></i> <strong>Dinheiro</strong>
+            </li>
+            <li (click)="showInfo('Produtos de Higiene', TextHigiene)">
+              <i class="fas fa-soap"></i> <strong>Higiene</strong>
+            </li>
+          </ul>
+        </div>
+        <div class="DivAjudaInferior">
+          <ul>
+            <li (click)="showInfo('Vitaminas e Suplementos', TextVitaminas)">
+                <i class="fas fa-pills"></i> <strong>Vitaminas</strong>
+            </li>
+            <li (click)="showInfo('Medicações', TextMedication)">
+                <i class="fas fa-syringe"></i> <strong>Medicações</strong>
+            </li>
+            <li (click)="showInfo('Coleiras e Guias', TextColeiras)">
+                <i class="fas fa-dog"></i><strong>Coleiras</strong>
+            </li>
+            <li (click)="showInfo('Casinhas e Abrigos', TextCasinhas)">
+                <i class="fas fa-home"></i> <strong>Casinhas</strong>
+            </li>
+          </ul>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+<section class="AdoteSection">
+    <div class="DivGeralAdote">
+        <div class="Text">
+            <h1>Animais Disponíveis para Adoção</h1>
+            <p>Conheça os nossos queridos animais que estão prontos para encontrar um novo lar.</p>
+        </div>
+
+        <div class="CategoryFilter">
+            <label for="category">Selecione a categoria:</label>
+            <select id="category">
+                <option value="all">Todos</option>
+                <option value="dog">Cães</option>
+                <option value="cat">Gatos</option>
+            </select>
+        </div>
+
+        <div class="DivGeralPets">
+            <div *ngFor="let imgPet of imgPets">
+                <img [src]="imgPet" alt="Imagem do pet disponível">
+                <p>NOME DO PET</p>
+                <button>SAIBA MAIS</button>
+            </div>
+        </div>
+    </div>
+</section>

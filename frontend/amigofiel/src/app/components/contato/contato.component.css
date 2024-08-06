@@ -1,0 +1,83 @@
+.contato{
+    background-color: #E59E06;
+}
+
+.ContatoDivGeral{
+    width: 90%;
+    max-width: 1300px;
+    padding: 2em 0px;
+    margin: auto;   
+    color: #F5F5DC;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.DivTxt{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.DivTxt h1{
+    font-size: 40px;
+}
+
+.DivTxt p{
+    font-size: 15px;
+}
+
+.DivForm{
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #F5F5DC;
+    width: 80%;
+    max-width: 400px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label{
+    color: #6B8E23;
+    font-weight: bold;
+}
+
+.enviarDuvida{
+    background-color: #6B8E23;
+    color: #E59E06;
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: 80%;
+    margin: auto;
+    max-width: 200px;
+    cursor: pointer;
+}
+
+.enviarDuvida:hover{
+    background-color: #80ae23;
+}
+
+#Nome, #email, #numero, #message{
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+
+#Nome::placeholder, #email::placeholder, #numero::placeholder, #message::placeholder{
+    color: rgba(128, 128, 128, 0.571);
+}

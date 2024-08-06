@@ -1,0 +1,219 @@
+/*primeira section - parte inicial*/
+
+.SectionIncial{
+    background-color: #6B8E23;
+}
+
+.DivGeralSectionInicial{
+    width: 90%;
+    max-width: 1300px;
+    padding: 2em 0px;
+    margin: auto;   
+    color: #F5F5DC;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.SectionIncial_Text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.SectionIncial_Text h2{
+    font-size: 40px;
+}
+
+.SectionIncial_Text p{
+    font-size: 15px;
+    width: 70%;
+    color: #f5f5dc98;
+}
+
+.SectionIncial_Text button{
+    background-color: #E59E06;
+    color: #F5F5DC;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    width: 200px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(255, 255, 255, 0.366);
+    margin-top: 10px;
+}
+
+.SectionIncial_Text button:hover{
+    background-color: #da9603;
+    transform: translate(-3px,-3px);
+    transition: transform 1s;
+}
+
+.SectionIncial_Img img{
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%;
+}
+
+/*segunda section - Apresentação da ong*/
+
+.ApresetacaoSobre{
+    background-color: #F5F5DC;
+}
+
+.DivGeralSectionApresetacaoSobre{
+    width: 90%;
+    max-width: 1300px;
+    padding: 2em 0px;
+    margin: auto;   
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ApresetacaoSobre_texto{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.ApresetacaoSobre_texto h2{
+    font-size: 30px;
+    color: #003366;
+}
+
+.ApresetacaoSobre_texto_p1{
+    font-size: 13px;
+    color: #00336694;
+}
+
+.ApresetacaoSobre_texto_p2{
+    font-size: 15px;
+    color: #003366c1;
+}
+
+.ApresetacaoSobre img{
+    width: 100%;
+    max-width: 300px;
+}
+
+/*Terceira section - Como pode ajudar a ong*/
+
+.ComoAjudar{
+    background-color: #E59E06;
+}
+
+.DivGeralAjuda{
+    width: 90%;
+    max-width: 1300px;
+    padding: 2em 0px;
+    margin: auto;   
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.DivGeralAjuda h2{
+    font-size: 40px;
+    color: #F5F5DC;
+    text-align: center;
+}
+
+.DivAjudaInferior{
+    width: 70%;
+    margin-bottom: 2em;
+}
+
+.DivAjudaSuperior{
+    width: 70%;
+    margin-top: 2em;
+}
+
+.DivAjudaSuperior ul{
+    display: flex;
+    flex-wrap: wrap;
+    flex: row;
+    gap: 10px;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.DivAjudaInferior ul{
+    flex-wrap: wrap;
+    display: flex;
+    flex: row;
+    gap: 10px;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.DivGeralAjuda i{
+    color: #F5F5DC;
+    font-size: 50px;
+}
+
+.DivGeralAjuda li{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    color: #F5F5DC;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.DivGeralAjuda li:hover{
+    background-color: #da9603;
+    border-radius: 10px;
+}
+
+
+@media (max-width: 768px){
+
+   /*primeira section - parte inicial*/
+
+   .DivGeralSectionInicial{
+       flex-direction: column;
+   }
+
+   .SectionIncial_Text p{
+       width: 80%;
+   }
+
+   .SectionIncial_Img img{
+       display: none;
+   }
+
+   /*segunda section - Apresentação da ong*/
+
+    .DivGeralSectionApresetacaoSobre{
+        flex-direction: column;
+    }
+
+    .ApresetacaoSobre_texto{
+        max-width: 600px;
+    }
+
+    .ApresetacaoSobre_texto h2{
+        font-size: 35px;
+    }
+
+    .ApresetacaoSobre_texto_p1{
+        font-size: 15px;
+    }
+
+    .ApresetacaoSobre_texto_p2{
+        font-size: 17px;
+    }
+
+}

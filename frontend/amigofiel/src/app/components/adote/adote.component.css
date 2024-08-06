@@ -1,0 +1,98 @@
+.AdoteSection{
+    background-color: #f5f5dc;
+}
+
+.DivGeralAdote{
+    width: 90%;
+    max-width: 1300px;
+    padding: 2em 0px;
+    margin: auto;   
+    display: flex;
+    flex-direction:  column;
+    gap: 2em;
+}
+
+.Text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    color: #003366;
+}
+
+.Text h1{
+    font-size: 40px;
+}
+
+.Text p{
+    font-size: 15px;
+}
+
+.CategoryFilter{
+    color: #003366;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#category{
+    padding: 5px 20px;
+    border: none;
+    background-color: #e59e06;
+    color: #f5f5dc;
+    border-radius: 20px;
+    outline: none;
+}
+
+.DivGeralPets {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+  
+.DivGeralPets div {
+    border-radius: 20px;
+    border: 2px solid #003366;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    flex: 1 1 calc(33.33% - 40px);
+    max-width: calc(33.33% - 40px);
+}
+
+.DivGeralPets p{
+    color: #003366;
+    font-size: 30px;
+}
+
+.DivGeralPets button{
+    background-color: #6b8e23;
+    color: #f5f5dc;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+}
+
+img {
+    width: 200px;
+}
+  
+  /* Media query para telas menores */
+@media (max-width: 768px) {
+    .DivGeralPets div {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+}
+  
