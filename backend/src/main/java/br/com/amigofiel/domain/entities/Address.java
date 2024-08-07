@@ -5,6 +5,7 @@ import br.com.amigofiel.domain.enums.FederalUnit;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 @Getter
 @Setter
@@ -42,5 +43,10 @@ public class Address {
         this.neighbourhood = dto.neighbourhood();
         this.city = dto.city();
         this.federalUnit = FederalUnit.valueOf(dto.federalUnit());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(obj, this); // Compara os objetos e não endereços de memória
     }
 }
