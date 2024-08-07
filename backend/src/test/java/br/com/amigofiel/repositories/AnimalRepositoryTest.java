@@ -5,6 +5,7 @@ import br.com.amigofiel.domain.entities.Address;
 import br.com.amigofiel.domain.entities.Adoption;
 import br.com.amigofiel.domain.entities.Animal;
 import br.com.amigofiel.domain.enums.CurrentStatus;
+import br.com.amigofiel.domain.enums.FederalUnit;
 import br.com.amigofiel.domain.enums.Size;
 import br.com.amigofiel.domain.enums.Specie;
 import org.junit.jupiter.api.AfterEach;
@@ -18,6 +19,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -141,14 +143,33 @@ public class AnimalRepositoryTest {
         assertThat(sut).isEmpty();
     }
 
+    @Sql("/import_animals_and_addresses.sql")
     @Test
     public void findAllAnimals_ReturnsAnimals() {
-        // TODO()
+
+        List<Animal> sut = animalRepository.findAll();
+
+        Animal rex = new Animal(1L, "Rex", Specie.DOG, "Labrador", Date.valueOf("2020-1-1"), 'M', 30.0,
+                Size.LARGE, true, new Address(1L, "12345-678", "Rua das Flores", "Centro",
+                "Cidade Exemplo", FederalUnit.MG), Date.valueOf("2023-1-1"), CurrentStatus.AVAILABLE, null);
+
+        Animal luna = new Animal(2L, "Luna", Specie.CAT, "Siamese", Date.valueOf("2019-6-15"), 'F', 5.0,
+                Size.SMALL, true, new Address(2L, "23456-789", "Avenida Central", "Bairro Novo",
+                "Outra Cidade", FederalUnit.MG), Date.valueOf("2023-6-15"), CurrentStatus.ADOPTED, null);
+
+        Animal max = new Animal(3L, "Max", Specie.DOG, "Bulldog", Date.valueOf("2018-9-23"), 'M', 20.0,
+                Size.MEDIUM, false, new Address(3L, "34567-890", "Praça da Liberdade", "Liberdade",
+                "Mais uma Cidade", FederalUnit.MG), Date.valueOf("2023-9-23"), CurrentStatus.AVAILABLE, null);
+
+        assertThat(sut).isNotEmpty();
+        assertThat(sut).hasSize(3);
+        assertThat(sut).containsExactlyInAnyOrder(luna, max, rex);
     }
 
     @Test
     public void findAllAnimals_ReturnsEmpty() {
-        // TODO()
+        List<Animal> sut = animalRepository.findAll();
+        assertThat(sut).isEmpty();
     }
 
     @Test
