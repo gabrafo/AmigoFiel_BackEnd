@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AdoteComponent {
 
+  tranparencia:boolean = false
+  ShowDadosPets:boolean = false
+
   imgPets = [
     "CatAdult.png",
     "CatAdult2.png",
@@ -16,5 +19,15 @@ export class AdoteComponent {
     "DogBaby.png",
     "DogBeagleAdult.png"
   ]
+
+  AbrirDados(){
+    this.tranparencia = true
+    this.ShowDadosPets = true
+  }
+
+  FecharDados(){
+    this.tranparencia = false
+    this.ShowDadosPets = false
+  }
 
 }
