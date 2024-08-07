@@ -1,0 +1,87 @@
+section{
+    background-color: #6b8e23;
+    color: #f5f5dc;
+}
+
+.DivGERAL{
+    padding: 20px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ParteInicialForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ParteInicialForm h1{
+    font-size: 40px;
+}
+
+.ParteInicialForm p{
+    color: #f5f5dcc5;
+}
+
+.ParteDosForms{
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Dados{
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f5f5dc;
+    color: #003366;
+}
+
+.Dados h1{
+    font-size: 30px;
+}
+
+.Dados form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Dados form div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Dados input{
+   outline: none;
+   padding: 10px;
+   border-radius: 20px;
+   border: none;
+   border:  1px solid #003366;
+   background-color: #f5f5dc;
+}
+
+.Envio button{
+    width: 100%;
+    background-color: #e59e06;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    color: #f5f5dc;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.Envio button:hover{
+    background-color: #c28604;
+}
+

@@ -18,8 +18,44 @@
             <div *ngFor="let imgPet of imgPets">
                 <img [src]="imgPet" alt="Imagem do pet disponível">
                 <p>NOME DO PET</p>
-                <button>SAIBA MAIS</button>
+                <button (click)="AbrirDados()">SAIBA MAIS</button>
             </div>
+        </div>
+
+        <div *ngIf="tranparencia === true" class="transparencia">.</div>
+
+        <div *ngIf="ShowDadosPets == true" class="DadosPets">
+            <p (click)="FecharDados()">X</p>
+            <div class="DivDadosImg">
+                <img src="CatAdult.png" alt="">
+                <div>
+                    <p class="nomepet">NOME DO PET</p>
+                    <p class="descripPet">Este pet é um companheiro carinhoso e leal, pronto para trazer alegria e amor para o seu lar. Com uma personalidade amigável e afetuosa, ele adora momentos de brincadeira e carinho. Perfeito para quem busca um novo amigo fiel!</p>
+                </div>
+            </div>
+            <div class="DivDadosAdicionais">
+                <div>
+                    <span class="material-symbols-outlined">pets</span>
+                    <p>Dados</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">pets</span>
+                    <p>Dados</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">pets</span>
+                    <p>Dados</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">pets</span>
+                    <p>Dados</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">pets</span>
+                    <p>Dados</p>
+                </div>
+            </div>
+            <button (click)="FecharDados()" routerLink="/formulario">ADOTE</button>
         </div>
     </div>
 </section>

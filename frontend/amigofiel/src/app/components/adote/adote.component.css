@@ -87,12 +87,120 @@
 img {
     width: 200px;
 }
+
+.transparencia{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #0033669a;
+}
+
+.DadosPets{
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #f5f5dc;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.DadosPets> p{
+    background-color: #6b8e23;
+    color: #f5f5dc;
+    border-radius: 50%;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: inline;
+}
+
+.DadosPets> p:hover{
+    background-color: #e59e06;
+}
+
+.DivDadosImg{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.DivDadosImg div{
+   width: 200px;
+}
+
+.nomepet{
+    color: #003366;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.descripPet{
+    color: #003366b9;
+}
+
+.DivDadosAdicionais{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.DivDadosAdicionais span{
+    color: #6b8e23;
+}
+
+.DivDadosAdicionais div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.DadosPets button{
+    background-color: #e59e06;
+    color: #0033669a;
+    font-weight: bolder;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.305);
+    border-radius: 10px;
+}
+
+.DadosPets button:hover{
+    background-color: #ffb005;
+    color: #0033669a;
+}
   
   /* Media query para telas menores */
 @media (max-width: 768px) {
     .DivGeralPets div {
       flex: 1 1 100%;
       max-width: 100%;
+    }
+
+    .DadosPets{
+        width: 80%;
+    }
+    
+    .DivDadosImg{
+        flex-direction: column;
+    }
+
+    .DivDadosImg div{
+        width: 100%;
+    }
+    
+    .nomepet{
+        margin-top: 20px;
     }
 }
   
