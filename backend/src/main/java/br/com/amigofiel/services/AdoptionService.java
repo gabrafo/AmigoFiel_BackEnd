@@ -1,7 +1,9 @@
 package br.com.amigofiel.services;
 
+import br.com.amigofiel.domain.dto.AdoptantDTO;
 import br.com.amigofiel.domain.dto.AdoptionDTO;
 import br.com.amigofiel.domain.entities.Adoption;
+import br.com.amigofiel.exceptions.NotFoundException;
 import br.com.amigofiel.mappers.AdoptionMapper;
 import br.com.amigofiel.repositories.AdoptionRepository;
 import jakarta.transaction.Transactional;
@@ -28,6 +30,11 @@ public class AdoptionService {
             throw new RuntimeException("Only three adoptions are allowed at a time.");
         }
     }
+
+    public AdoptionDTO findAdoptionById(Long id) {
+        return adoptionMapper.toDTO(adoptionRepository.findById(id).orElseThrow(() -> new NotFoundException("Adoption not found")));
+    }
+
 
     private int validateAdoptions() {
         List<Adoption> adoptions = adoptionRepository.findAll();
