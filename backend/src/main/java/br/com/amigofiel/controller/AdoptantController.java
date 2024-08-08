@@ -25,26 +25,6 @@ public class AdoptantController {
     @Autowired
     private AdoptantService adoptantService;
 
-
-    @Operation(summary = "Cria um adotante",
-            description = "Cria um novo adotante no banco de dados.",
-            tags = {"Adoptant"},
-            responses = {
-                    @ApiResponse(description = "Success", responseCode = "200",
-                            content = @Content(schema = @Schema(implementation = AdoptantDTO.class))
-                    ),
-                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
-                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
-                    @ApiResponse(description = "Forbidden", responseCode = "403", content = @Content),
-                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
-            })
-    @PostMapping(value = "/create",
-            produces = "application/json",
-            consumes = "application/json")
-    public ResponseEntity<Adoptant> saveAdoptant(@Valid @RequestBody AdoptantDTO adoptantDTO) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(adoptantService.createAdoptant(adoptantDTO));
-    }
-
     @Operation(summary = "Lista os adotantes",
             description = "Lista todos os adotantes do Banco de Dados.",
             tags = {"Adotante"},

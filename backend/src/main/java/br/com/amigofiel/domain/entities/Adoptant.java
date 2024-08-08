@@ -2,6 +2,7 @@ package br.com.amigofiel.domain.entities;
 
 import br.com.amigofiel.domain.dto.AdoptantDTO;
 import br.com.amigofiel.domain.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class Adoptant {
 
     @OneToOne(mappedBy = "adoptant")
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonManagedReference
     private User user;
 
     @Builder

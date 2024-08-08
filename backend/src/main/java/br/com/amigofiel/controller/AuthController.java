@@ -1,9 +1,14 @@
 package br.com.amigofiel.controller;
 
+import br.com.amigofiel.domain.dto.AdoptantDTO;
+import br.com.amigofiel.domain.dto.LoginDTO;
 import br.com.amigofiel.domain.dto.UserDTO;
+import br.com.amigofiel.domain.entities.Adoptant;
 import br.com.amigofiel.domain.entities.User;
 import br.com.amigofiel.infra.security.TokenService;
+import br.com.amigofiel.repositories.AdoptantRepository;
 import br.com.amigofiel.repositories.UserRepository;
+import br.com.amigofiel.services.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -29,10 +34,13 @@ public class AuthController {
     private UserRepository authRepository;
 
     @Autowired
+    private AuthService authService;
+
+    @Autowired
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Valid UserDTO data){
+    public ResponseEntity login(@RequestBody @Valid LoginDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.username(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
@@ -43,8 +51,22 @@ public class AuthController {
 
     @Transactional
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody @Valid UserDTO data){
-        //TODO()
-        return null;
+    public ResponseEntity register(@RequestBody @Valid AdoptantDTO data){
+        if(this.authRepository.findByUsername(data.user().getUsername()) != null)
+            return ResponseEntity.badRequest().body("Username already exists");
+        if (this.authRepository.findByEmail(data.user().getEmail()) != null)
+            return ResponseEntity.badRequest().body("Email already exists");
+
+        Adoptant newAdoptant = new Adoptant(data);
+
+        String encryptedPassword = new BCryptPasswordEncoder().encode(data.user().getPassword());
+        User newUser = new User(newAdoptant, data.user().getEmail(), data.user().getUsername(), encryptedPassword, data.user().getRole());
+
+        authService.registerAdoptant(newAdoptant, newUser);
+
+        return ResponseEntity.created(ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(newUser.getId())
+                .toUri()).body(newAdoptant);
     }
 }

@@ -1,6 +1,7 @@
 package br.com.amigofiel.domain.entities;
 
 import br.com.amigofiel.domain.enums.AuthRole;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,22 +24,31 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private AuthRole role;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "adoptant_id", nullable = false)
+    @JsonBackReference
     private Adoptant adoptant;
+
+    public User(Adoptant adoptant, String email, String username, String encryptedPassword, AuthRole role) {
+        this.adoptant = adoptant;
+        this.email = email;
+        this.username = username;
+        this.password = encryptedPassword;
+        this.role = role;
+    }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(this.role == AuthRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
