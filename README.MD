@@ -17,6 +17,7 @@
 ### Backend
 - Java
 - Spring Framework (Security, Data, etc)
+- OAuth 2.0
 - CORS
 - Swagger
 - Java Mail Sender
