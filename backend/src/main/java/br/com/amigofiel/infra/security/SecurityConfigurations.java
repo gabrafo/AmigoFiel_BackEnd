@@ -30,8 +30,9 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize -> authorize
                         // Permitir acesso ao Swagger UI
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers(HttpMethod.POST, "adoptants/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "adoptants/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "auth/verify/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/animals/**").hasRole("ADMIN")
 
                         .anyRequest().authenticated()

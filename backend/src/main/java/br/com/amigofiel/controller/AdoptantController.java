@@ -27,7 +27,7 @@ public class AdoptantController {
 
     @Operation(summary = "Lista os adotantes",
             description = "Lista todos os adotantes do Banco de Dados.",
-            tags = {"Adotante"},
+            tags = {"Adoptant"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = @Content(schema = @Schema(implementation = AdoptantDTO.class))

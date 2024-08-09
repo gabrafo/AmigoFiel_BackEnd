@@ -5,7 +5,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,17 +15,21 @@ import java.io.IOException;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
-    @Autowired
-    TokenService tokenService;
-    @Autowired
-    UserRepository repository;
+
+    private final TokenService tokenService;
+    private final UserRepository repository;
+
+    public SecurityFilter(TokenService tokenService, UserRepository repository) {
+        this.tokenService = tokenService;
+        this.repository = repository;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, IOException {
         var token = this.recoverToken(request);
         var requestURI = request.getRequestURI();
 
-        if (requestURI.equals("/adoptants/auth/login") || requestURI.equals("/adoptants/auth/register")) {
+        if (requestURI.equals("/auth/login") || requestURI.equals("/auth/register") || requestURI.startsWith("/auth/verify")) {
             filterChain.doFilter(request, response);
             return;
         }

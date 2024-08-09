@@ -37,6 +37,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AuthRole role;
 
+    @OneToOne(mappedBy = "user")
+    private ForgotPassword forgotPassword;
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "adoptant_id", nullable = false)
     @JsonBackReference
