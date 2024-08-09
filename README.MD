@@ -78,7 +78,7 @@ Certifique-se de que o Docker e o Docker Compose estão instalados e configurado
 5. Faça as requisições utilizando seu cliente HTTP favorito (ou rode o Frontend e teste o projeto integralmente)
 
 ### Documentação da API
-A documentação da API está disponível via Swagger. Para acessá-la, abra o navegador e vá para:
+A documentação da API está disponível via Swagger. Para acessá-la, após a execução do Backend, abra o navegador e vá para:
 http://localhost:8080/swagger-ui.html
 
 ## Contribuição
